@@ -84,7 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['name'], $_POST['email
     $controller = new MessageController();
     $controller->sendMessage($_POST['name'], $_POST['email'], $_POST['message']);
     
-    header("Location: /draftosaurus/public/index.php?page=about#contact");
+    header("Location: /public/index.php?page=about#contact");
     exit();
 }
 

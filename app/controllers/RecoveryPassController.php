@@ -45,7 +45,7 @@ class RecoveryPassController {
         $mail->setFrom($_ENV['SMTP_USER'], 'Draftosaurus');
         $mail->addAddress($email);
         $mail->Subject = 'Recupera tu contraseña';
-        $resetLink = "http://localhost/draftosaurus/public/index.php?page=resetPassword&token=$token";
+        $resetLink = "http://192.168.1.100:3500/public/index.php?page=resetPassword&token=$token";
         $mail->Body = "Haz clic aquí para cambiar tu contraseña: $resetLink";
 
         return $mail->send();

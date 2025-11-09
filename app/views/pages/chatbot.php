@@ -9,7 +9,7 @@ if (session_status() === PHP_SESSION_NONE) session_start();
     <aside class="sidebar">
         <div class="hugo-profile">
             <div class="hugo-avatar-container">
-                <img src="/draftosaurus/public/img/chatbot.gif" alt="Avatar de Hugo">
+                <img src="/public/img/chatbot.gif" alt="Avatar de Hugo">
             </div>
             <h2>Hugo</h2>
             <p>Tu asistente para Draftosaurus</p>
@@ -35,5 +35,5 @@ if (session_status() === PHP_SESSION_NONE) session_start();
 </div>
 
 <!-- JS -->
-<script src="/draftosaurus/public/js/chatbot.js"></script>
-<link rel="stylesheet" href="/draftosaurus/public/css/views/chatbot.css">
+<script src="/public/js/chatbot.js"></script>
+<link rel="stylesheet" href="/public/css/views/chatbot.css">

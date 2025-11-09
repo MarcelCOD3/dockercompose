@@ -95,7 +95,7 @@ class UserController {
         $this->ensureSession();
         session_unset();
         session_destroy();
-        header("Location: /draftosaurus/public/index.php?page=main");
+        header("Location: /public/index.php?page=main");
         exit();
     }
 }

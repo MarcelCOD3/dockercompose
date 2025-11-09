@@ -21,10 +21,10 @@ if (session_status() === PHP_SESSION_NONE) {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
     <!-- Estilos locales -->
-    <link rel="stylesheet" href="/draftosaurus/public/css/styles.css">
-    <link rel="stylesheet" href="/draftosaurus/public/css/layouts/navbar.css">
-    <link rel="stylesheet" href="/draftosaurus/public/css/partials/board.css">
-    <link rel="stylesheet" href="/draftosaurus/public/css/layouts/footer.css">
+    <link rel="stylesheet" href="/public/css/styles.css">
+    <link rel="stylesheet" href="/public/css/layouts/navbar.css">
+    <link rel="stylesheet" href="/public/css/partials/board.css">
+    <link rel="stylesheet" href="/public/css/layouts/footer.css">
 
     <!-- Script principal -->
     <script src="/public/js/main.js" defer></script>

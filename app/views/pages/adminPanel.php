@@ -3,12 +3,12 @@ if (session_status() === PHP_SESSION_NONE) session_start();
 
 // Comprobar si es admin
 if (empty($_SESSION['is_admin']) || !in_array($_SESSION['is_admin'], [1, true], true)) {
-    header('Location: /draftosaurus/public/index.php?page=main');
+    header('Location: /public/index.php?page=main');
     exit();
 }
 
 // Controlador
-require_once $_SERVER['DOCUMENT_ROOT'].'/draftosaurus/app/controllers/AdminController.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/app/controllers/AdminController.php';
 $adminController = new AdminController();
 
 // Manejo de acciones POST
@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Eliminar usuario
     if (!empty($_POST['delete_nickname'])) {
         $adminController->deleteUser($_POST['delete_nickname']);
-        header('Location: /draftosaurus/public/index.php?page=adminPanel');
+        header('Location: /public/index.php?page=adminPanel');
         exit();
     }
 
@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $days = (int)$_POST['ban_days'];
         $banUntil = date('Y-m-d H:i:s', strtotime("+$days days"));
         $adminController->banUser($nickname, $banUntil);
-        header('Location: /draftosaurus/public/index.php?page=adminPanel');
+        header('Location: /public/index.php?page=adminPanel');
         exit();
     }
 
@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!empty($_POST['unban_nickname'])) {
         $nickname = $_POST['unban_nickname'];
         $adminController->banUser($nickname, null); // null quita el baneo
-        header('Location: /draftosaurus/public/index.php?page=adminPanel');
+        header('Location: /public/index.php?page=adminPanel');
         exit();
     }
 
@@ -50,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $adminController->editUser($nickname, $firstName, $lastName, $email, $isAdmin, $password);
 
         $_SESSION['editUserFeedback'] = "Usuario '$nickname' actualizado correctamente.";
-        header('Location: /draftosaurus/public/index.php?page=adminPanel');
+        header('Location: /public/index.php?page=adminPanel');
         exit();
     }
 }
@@ -67,7 +67,7 @@ $usuarios = $adminController->getAllUsers();
     <title>Panel de Administración</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/draftosaurus/public/css/views/adminPanel.css">
+    <link rel="stylesheet" href="/public/css/views/adminPanel.css">
 </head>
 
 <body>

@@ -16,10 +16,10 @@ unset($_SESSION['loginError'], $_SESSION['showLoginModal']);
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="/draftosaurus/public/css/styles.css">
-    <link rel="stylesheet" href="/draftosaurus/public/css/layouts/navbar.css">
-    <link rel="stylesheet" href="/draftosaurus/public/css/views/rules.css">
-    <link rel="stylesheet" href="/draftosaurus/public/css/layouts/footer.css">
+    <link rel="stylesheet" href="/public/css/styles.css">
+    <link rel="stylesheet" href="/public/css/layouts/navbar.css">
+    <link rel="stylesheet" href="/public/css/views/rules.css">
+    <link rel="stylesheet" href="/public/css/layouts/footer.css">
 </head>
 
 <body>
@@ -58,28 +58,28 @@ unset($_SESSION['loginError'], $_SESSION['showLoginModal']);
 
             <div class="rules-galery text-center mb-5">
                 <?php if ($lang === 'en'): ?>
-                <img src="/draftosaurus/public/img/rules1.png" class="rules mb-3" id="index" alt="Game Rules Page 1">
-                <img src="/draftosaurus/public/img/rules2.png" class="rules mb-3" id="setup" alt="Game Rules Page 2">
-                <img src="/draftosaurus/public/img/rules3.png" class="rules mb-3" id="gameplay" alt="Game Rules Page 3">
-                <img src="/draftosaurus/public/img/rules4.png" class="rules mb-3" id="dinosaurpens"
+                <img src="/public/img/rules1.png" class="rules mb-3" id="index" alt="Game Rules Page 1">
+                <img src="/public/img/rules2.png" class="rules mb-3" id="setup" alt="Game Rules Page 2">
+                <img src="/public/img/rules3.png" class="rules mb-3" id="gameplay" alt="Game Rules Page 3">
+                <img src="/public/img/rules4.png" class="rules mb-3" id="dinosaurpens"
                     alt="Game Rules Page 4">
-                <img src="/draftosaurus/public/img/rules5.png" class="rules mb-3" id="summer" alt="Game Rules Page 5">
-                <img src="/draftosaurus/public/img/rules6.png" class="rules mb-3" id="dice" alt="Game Rules Page 6">
-                <img src="/draftosaurus/public/img/rules7.png" class="rules mb-3" id="winter" alt="Game Rules Page 7">
-                <img src="/draftosaurus/public/img/rules8.png" class="rules mb-3" id="extra" alt="Game Rules Page 8">
+                <img src="/public/img/rules5.png" class="rules mb-3" id="summer" alt="Game Rules Page 5">
+                <img src="/public/img/rules6.png" class="rules mb-3" id="dice" alt="Game Rules Page 6">
+                <img src="/public/img/rules7.png" class="rules mb-3" id="winter" alt="Game Rules Page 7">
+                <img src="/public/img/rules8.png" class="rules mb-3" id="extra" alt="Game Rules Page 8">
                 <?php else: ?>
-                <img src="/draftosaurus/public/img/reglas1.png" class="rules mb-3" id="index" alt="Reglamento Pagina 1">
-                <img src="/draftosaurus/public/img/reglas2.png" class="rules mb-3" id="setup" alt="Reglamento Pagina 2">
-                <img src="/draftosaurus/public/img/reglas3.png" class="rules mb-3" id="gameplay"
+                <img src="/public/img/reglas1.png" class="rules mb-3" id="index" alt="Reglamento Pagina 1">
+                <img src="/public/img/reglas2.png" class="rules mb-3" id="setup" alt="Reglamento Pagina 2">
+                <img src="/public/img/reglas3.png" class="rules mb-3" id="gameplay"
                     alt="Reglamento Pagina 3">
-                <img src="/draftosaurus/public/img/reglas4.png" class="rules mb-3" id="dinosaurpens"
+                <img src="/public/img/reglas4.png" class="rules mb-3" id="dinosaurpens"
                     alt="Reglamento Pagina 4">
-                <img src="/draftosaurus/public/img/reglas5.png" class="rules mb-3" id="summer"
+                <img src="/public/img/reglas5.png" class="rules mb-3" id="summer"
                     alt="Reglamento Pagina 5">
-                <img src="/draftosaurus/public/img/reglas6.png" class="rules mb-3" id="dice" alt="Reglamento Pagina 6">
-                <img src="/draftosaurus/public/img/reglas7.png" class="rules mb-3" id="winter"
+                <img src="/public/img/reglas6.png" class="rules mb-3" id="dice" alt="Reglamento Pagina 6">
+                <img src="/public/img/reglas7.png" class="rules mb-3" id="winter"
                     alt="Reglamento Pagina 7">
-                <img src="/draftosaurus/public/img/reglas8.png" class="rules mb-3" id="extra" alt="Reglamento Pagina 8">
+                <img src="/public/img/reglas8.png" class="rules mb-3" id="extra" alt="Reglamento Pagina 8">
                 <?php endif; ?>
             </div>
 

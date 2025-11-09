@@ -1,5 +1,5 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'].'/draftosaurus/app/models/UserModel.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/app/models/UserModel.php';
 
 class AdminController {
     private $userModel;
