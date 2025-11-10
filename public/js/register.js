@@ -10,7 +10,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Validación de nickname
   if (nickname && nicknameStatus) {
     nickname.addEventListener("input", () => {
       if (nickname.value.trim() === "") {

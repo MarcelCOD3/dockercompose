@@ -1,9 +1,7 @@
-/* Paleta principal: negro (#000), naranja (#ff6600), blanco (#fff) */
-
 body {
-  background-color: #000;
-  color: #fff;
-  font-family: "Press Start 2P", cursive;
+  background: linear-gradient(180deg, #2c2c2c 0%, #1a1a1a 100%);
+  color: var(--primary);
+  font-family: "Fredoka One", cursive;
   margin: 0;
   padding: 0;
 }
@@ -15,27 +13,41 @@ body {
   text-align: center;
 }
 
-/* Títulos */
 h1,
 h2 {
-  color: #ff6600;
-  margin-bottom: 20px;
+  color: var(--primary);
   text-transform: uppercase;
+  text-shadow: 2px 2px 6px var(--shadow);
+  margin-bottom: 20px;
 }
 
 h1 span {
   color: #fff;
 }
 
-/* Sección introductoria */
-.intro p {
-  color: #ccc;
-  font-size: 0.9rem;
-  line-height: 1.6;
-  margin-bottom: 40px;
+.title {
+  color: var(--primary);
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
 }
 
-/* Sección equipo */
+h3 {
+  color: var(--primary);
+  text-align: center;
+  text-shadow: 1px 1px 4px var(--shadow);
+  margin-top: 40px;
+  margin-bottom: 10px;
+  transition: color 0.3s, text-shadow 0.3s;
+}
+
+h3:hover {
+  color: #ff6600;
+  text-shadow: 2px 2px 10px #ff6600;
+}
+
 .team {
   margin: 60px 0;
 }
@@ -48,64 +60,110 @@ h1 span {
 }
 
 .member-card {
-  background: #111;
-  border: 2px solid #ff6600;
-  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+
+  min-height: 350px;
+  background: #1a1a1a;
+  border: 2px solid var(--primary);
+  border-radius: 25px !important;
   width: 280px;
   padding: 20px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 8px 20px var(--shadow) !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease !important;
 }
 
 .member-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 0 15px #ff6600aa;
+  box-shadow: 0 12px 25px rgba(255, 102, 0, 0.7);
+  border-color: #ff6600;
 }
 
 .member-card img {
-  width: 100px;
-  height: 100px;
+  width: 110px;
+  height: 110px;
   object-fit: contain;
   margin-bottom: 15px;
+  border-radius: 50%;
+  border: 2px solid var(--primary);
+  box-shadow: 0 5px 15px var(--shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.member-card img:hover {
+  border-color: #ff6600;
+  box-shadow: 0 10px 25px rgba(255, 102, 0, 0.7);
+  transform: scale(1.05);
 }
 
 .member-card h3 {
   color: #ff6600;
-  font-size: 1rem;
+  font-size: 1.1rem;
   margin-bottom: 10px;
+  text-shadow: 1px 1px 5px rgba(255, 102, 0, 0.8);
+  transition: color 0.3s, text-shadow 0.3s;
+}
+
+.member-card h3:hover {
+  color: #ffa500;
+  text-shadow: 2px 2px 10px rgba(255, 102, 0, 0.9);
 }
 
 .member-card p {
   color: #ddd;
-  font-size: 0.75rem;
-  line-height: 1.4;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  flex-grow: 1;
 }
 
-/* Sección contacto */
+#chatbot-button {
+  background-color: var(--primary);
+  color: #fff;
+  position: fixed;
+  bottom: 50px;
+  right: 20px;
+  z-index: 9999;
+  border-radius: 50%;
+  padding: 12px 20px;
+  font-weight: bold;
+  font-size: 1rem;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(255, 102, 0, 0.7);
+  transition: all 0.2s ease-in-out;
+  border: 2px solid transparent;
+}
+
+#chatbot-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(255, 102, 0, 0.9);
+  border: 2px solid var(--primary);
+}
+
 .contact {
   margin-top: 60px;
 }
 
 .contact p {
-  color: #ccc;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   margin-bottom: 30px;
 }
 
 .contact-form {
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 15px;
-  width: 100%;
   max-width: 500px;
   margin: 0 auto;
 }
 
 .contact-form label {
   align-self: flex-start;
-  color: #ff6600;
-  font-size: 0.75rem;
-  margin-left: 5px;
+  color: var(--primary);
+  font-size: 0.9rem;
 }
 
 .contact-form input,
@@ -113,38 +171,160 @@ h1 span {
   width: 100%;
   background: #111;
   color: #fff;
-  border: 2px solid #ff6600;
-  border-radius: 10px;
-  padding: 10px;
+  border: 2px solid var(--primary);
+  border-radius: 12px;
+  padding: 12px;
   font-family: inherit;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   resize: none;
+  transition: box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
   outline: none;
-  box-shadow: 0 0 8px #ff6600aa;
+  box-shadow: 0 0 8px var(--shadow);
+  transform: scale(1.01);
+  border-color: #ff6600;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: #fff;
+  opacity: 1;
 }
 
 .contact-form button {
-  background-color: #ff6600;
+  background-color: var(--primary);
+  color: var(--text-button);
   border: none;
-  border-radius: 12px;
-  color: #000;
+  border-radius: 20px;
   font-weight: bold;
-  padding: 10px 25px;
-  font-family: inherit;
+  padding: 12px 25px;
   cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
+  transition: background-color 0.3s, transform 0.2s, color 0.2s;
+  box-shadow: 0 5px 15px var(--shadow);
 }
 
 .contact-form button:hover {
-  background-color: #ff8533;
-  transform: scale(1.05);
+  background-color: var(--primary-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px var(--shadow);
+  color: white !important;
 }
 
-/* Responsive */
+.btn-warning {
+  background-color: var(--primary);
+  color: var(--text-button);
+  border: none;
+  border-radius: 20px;
+  font-weight: bold;
+  padding: 12px 25px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s, color 0.2s;
+  box-shadow: 0 5px 15px var(--shadow);
+}
+
+.btn-warning:hover {
+  background-color: var(--primary-hover);
+
+  color: white !important;
+  transform: translateY(-3px);
+}
+
+.mapa iframe {
+  border-radius: 25px;
+  border: 2px solid var(--primary);
+  box-shadow: 0 8px 20px var(--shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.mapa iframe:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(255, 102, 0, 0.7);
+  border-color: #ff6600;
+}
+
+.mapa a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.mapa a:hover {
+  color: var(--primary-hover);
+}
+
+#chatbotModal .modal-content {
+  background-color: #1f1f1f !important;
+  border-radius: 20px !important;
+  box-shadow: 0 8px 25px rgba(255, 102, 0, 0.6);
+  color: #fff;
+}
+
+#chatbotModal .modal-header {
+  background-color: #2c2c2c !important;
+  color: #ff6600 !important;
+  border-bottom: 2px solid #ff6600 !important;
+  text-shadow: 1px 1px 5px rgba(255, 102, 0, 0.8);
+}
+
+#chatbotModal .modal-title {
+  font-weight: bold;
+}
+
+#chatbotModal .modal-body {
+  background-color: #1f1f1f !important;
+  color: #ddd !important;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+#chatbotModal .modal-footer {
+  background-color: #2c2c2c !important;
+  border-top: 2px solid #ff6600 !important;
+}
+
+#chatbotModal .modal-body {
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+#chatbotModal .modal-body::-webkit-scrollbar {
+  width: 10px;
+}
+
+#chatbotModal .modal-body::-webkit-scrollbar-track {
+  background: #1a1a1a;
+  border-radius: 5px;
+}
+
+#chatbotModal .modal-body::-webkit-scrollbar-thumb {
+  background-color: #ff6600;
+  border-radius: 5px;
+  border: 2px solid #1a1a1a;
+}
+
+#chatbotModal .modal-body {
+  scrollbar-width: thin;
+  scrollbar-color: #ff6600 #1a1a1a;
+}
+
+.modal-hugo .btn-close {
+  background-color: transparent;
+  opacity: 0.8;
+  transition: all 0.25s ease;
+  filter: invert(58%) sepia(53%) saturate(611%) hue-rotate(7deg)
+    brightness(100%) contrast(95%);
+}
+
+.modal-hugo .btn-close:hover {
+  opacity: 1;
+  transform: scale(1.2);
+  filter: invert(41%) sepia(92%) saturate(639%) hue-rotate(8deg)
+    brightness(100%) contrast(95%);
+  cursor: pointer;
+}
+
 @media (max-width: 768px) {
   .team-members {
     flex-direction: column;
@@ -157,5 +337,10 @@ h1 span {
 
   .about-container {
     padding: 40px 15px;
+  }
+
+  .col-md-5 {
+    flex: 0 0 90%;
+    max-width: 90%;
   }
 }

@@ -4,12 +4,11 @@ document.addEventListener("DOMContentLoaded", function () {
   const trackingForm = document.getElementById("trackingForm");
   const submitButton = trackingForm.querySelector('button[type="submit"]');
 
-  // Desactivar botón hasta que haya inputs
   submitButton.disabled = true;
 
   numPlayersSelect.addEventListener("change", function () {
     const count = parseInt(this.value);
-    playerInputsDiv.innerHTML = ""; // limpiar anteriores
+    playerInputsDiv.innerHTML = "";
 
     if (!isNaN(count)) {
       for (let i = 1; i <= count; i++) {
@@ -22,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
         `;
         playerInputsDiv.appendChild(div);
       }
-      submitButton.disabled = false; // habilitar botón cuando se crean los inputs
+      submitButton.disabled = false;
     } else {
       submitButton.disabled = true;
     }

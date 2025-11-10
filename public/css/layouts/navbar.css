@@ -256,7 +256,6 @@
     brightness(100%) contrast(95%);
 }
 .modal-dark .btn-close:hover {
-  /* Igual que en main.css */
   opacity: 1;
   transform: scale(1.2);
   filter: invert(41%) sepia(92%) saturate(639%) hue-rotate(8deg)
@@ -281,12 +280,12 @@
   color: #ffa366;
 }
 @media (max-width: 1024px) {
-    #navbarNav {
-        flex-wrap: wrap;
-        gap: 5px;
-    }
-    #navbarNav .nav-link {
-        padding: 0.3rem 0.5rem;
-        font-size: 0.9rem;
-    }
+  #navbarNav {
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+  #navbarNav .nav-link {
+    padding: 0.3rem 0.5rem;
+    font-size: 0.9rem;
+  }
 }

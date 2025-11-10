@@ -1,14 +1,3 @@
-/*Explicaciones de algunos items.
-
-1-:root
-  Definimos las variables globales de colores y sombras que usaremos para todo el proyecto.
-  Luego las llamamos utilizando var(--nombre-variable).
-
-2-clamp(valor-minimo, valor-preferido, valor-maximo)
-  Define valores responsivos para el tamaño de pantalla, ajustando entre un minimo y un maximo.
-3-
-*/
-
 :root {
   --bg: #000000;
   --primary: #ff6600;
@@ -34,57 +23,61 @@ body {
   margin: 0;
   padding: 0;
 }
-/* Prevenir overflow horizontal */
+.btn-custom {
+  background-color: #fa6400 !important;
+  color: #fff !important;
+}
+
 @media (max-width: 1024px) {
-    body {
-        overflow-x: auto;
-    }
-    
-    .navbar {
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-    }
-    
-    .navbar-nav {
-        flex-wrap: wrap;
-        gap: 0 !important;
-        width: 100%;
-    }
-    
-    .nav-link {
-        padding: 0.25rem 0.35rem !important;
-        font-size: 0.80rem;
-        white-space: nowrap;
-        flex-shrink: 0;
-    }
-    
-    .navbar-brand {
-        flex-shrink: 0;
-        font-size: 1rem;
-        padding: 0.3rem 0.5rem !important;
-    }
+  body {
+    overflow-x: auto;
+  }
+
+  .navbar {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .navbar-nav {
+    flex-wrap: wrap;
+    gap: 0 !important;
+    width: 100%;
+  }
+
+  .nav-link {
+    padding: 0.25rem 0.35rem !important;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .navbar-brand {
+    flex-shrink: 0;
+    font-size: 1rem;
+    padding: 0.3rem 0.5rem !important;
+  }
 }
 
 @media (max-width: 768px) {
-    .nav-link {
-        padding: 0.2rem 0.25rem !important;
-        font-size: 0.70rem;
-    }
+  .nav-link {
+    padding: 0.2rem 0.25rem !important;
+    font-size: 0.7rem;
+  }
 }
 
 @media (max-width: 1024px) {
-    .navbar {
-        overflow-x: auto;
-    }
-    
-    .navbar-nav {
-        flex-wrap: nowrap;
-        gap: 2px;
-    }
-    
-    .nav-link {
-        padding: 0.5rem 0.5rem !important;
-        font-size: 0.85rem;
-        white-space: nowrap;
-    }
+  .navbar {
+    overflow-x: auto;
+  }
+
+  .navbar-nav {
+    flex-wrap: nowrap;
+    gap: 2px;
+  }
+
+  .nav-link {
+    padding: 0.5rem 0.5rem !important;
+    font-size: 0.85rem;
+    white-space: nowrap;
+  }
 }

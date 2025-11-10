@@ -3,36 +3,27 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 require_once __DIR__ . '/../config/database.php';
-
-
-
-
 require_once __DIR__ . '/../app/controllers/RecoveryPassController.php';
 $recoveryController = new RecoveryPassController();
-
 require_once __DIR__ . '/../app/controllers/MessageController.php';
 $messageController = new MessageController();
-
 
 // Manejo de idioma
 if (isset($_GET['lang'])) {
     $_SESSION['lang'] = $_GET['lang'] === 'en' ? 'en' : 'es';
 }
 
-// Carga de idioma
 require_once __DIR__ . '/../app/assets/languages/loadLanguage.php';
 
-// Carga controlador de usuario
 require_once __DIR__ . '/../app/controllers/UserController.php';
 $userController = new UserController();
 
-// Determina la página
+// Determina la pagina
 $page = $_GET['page'] ?? 'index';
 $page = basename($page);
 
-// -----------------
-// Manejo de recuperación de contraseña (forgotPassword)
-// -----------------
+// Manejo de olvido de contraseña
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email']) && $page === 'forgotPassword') {
     $email = trim($_POST['email']);
     $sent = $recoveryController->sendResetEmail($email);
@@ -50,9 +41,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email']) && $page ===
     exit();
 }
 
-// -----------------
-// Manejo de restablecimiento de contraseña (resetPassword)
-// -----------------
+// Manejo de restablecimiento de contraseña 
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['token'], $_POST['new_password'], $_POST['confirm_password']) && $page === 'resetPassword') {
     $token = $_POST['token'];
     $user = $recoveryController->verifyToken($token);
@@ -71,21 +61,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['token'], $_POST['new_
             $_SESSION['resetMessage'] = "La contraseña debe tener al menos 6 caracteres.";
             $_SESSION['resetClass'] = "alert-danger";
         } else {
-            // ✅ Pasamos el token como tercer parámetro
+
             $recoveryController->updatePassword($user['user_id'], $newPassword, $token);
             $_SESSION['resetMessage'] = "Contraseña actualizada correctamente. Ya puedes iniciar sesión.";
             $_SESSION['resetClass'] = "alert-success";
         }
     }
 
-    // Redirige al mismo resetPassword con token para mostrar mensaje
     header("Location: /public/index.php?page=resetPassword&token=" . urlencode($token));
     exit();
 }
 
-// -----------------
 // Manejo de login
-// -----------------
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
     $email = trim($_POST['email'] ?? '');
     $password = trim($_POST['password'] ?? '');
@@ -109,20 +96,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
     }
 }
 
-// -----------------
 // Manejo de logout
-// -----------------
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
     $userController->logout();
     exit();
 }
 
-// -----------------
 // Manejo de formulario de contacto
-// -----------------
-if ($_SERVER['REQUEST_METHOD'] === 'POST' 
-    && isset($_POST['name'], $_POST['email'], $_POST['message']) 
-    && $page === 'about') {
+
+if (
+    $_SERVER['REQUEST_METHOD'] === 'POST'
+    && isset($_POST['name'], $_POST['email'], $_POST['message'])
+    && $page === 'about'
+) {
 
     $messageController->sendMessage($_POST['name'], $_POST['email'], $_POST['message']);
     header("Location: /public/index.php?page=about#contact");
@@ -131,12 +118,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'
 
 $viewsPath = __DIR__ . '/../app/views/pages/';
 $errorsPath = __DIR__ . '/../app/views/errors/';
-$pageFile = $viewsPath . $page;  // sin extensión
+$pageFile = $viewsPath . $page;
 
 // Si existe .php lo cargamos
 if (file_exists($pageFile . '.php')) {
     include $pageFile . '.php';
-// Si existe .html lo cargamos
+    // Si existe .html lo cargamos
 } elseif (file_exists($pageFile . '.html')) {
     include $pageFile . '.html';
 } else {

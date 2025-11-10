@@ -5,10 +5,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const visited = players.map(() => false);
 
   const avatarsContainer = document.getElementById("avatarsContainer");
-  const currentPlayerTitle = document.getElementById("currentPlayerTitle");
   const nextBtn = document.getElementById("nextBtn");
   const finishBtn = document.getElementById("finishBtn");
   const winnerModalEl = document.getElementById("winnerModal");
+  const currentPlayerNameSpan = document.getElementById("currentPlayerName");
+  const currentPlayerTitle = document.getElementById("currentPlayerTitle");
+  const currentPlayerName = document.getElementById("currentPlayerName");
 
   const avatarImages = [
     "2d-blue.PNG",
@@ -31,7 +33,10 @@ document.addEventListener("DOMContentLoaded", () => {
     .sort(() => Math.random() - 0.5)
     .slice(0, players.length);
 
-  // Crear avatares
+  const updateCurrentPlayerName = () => {
+    currentPlayerNameSpan.textContent = players[currentPlayer];
+  };
+
   players.forEach((name, i) => {
     const imgFile = shuffledImages[i];
     const div = document.createElement("div");
@@ -48,6 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
       currentPlayer = i;
       updateAvatars();
       loadScores();
+      updateCurrentPlayerName();
     });
   });
 
@@ -63,10 +69,12 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const loadScores = () => {
-    currentPlayerTitle.textContent = `Dino-Puntaje de ${players[currentPlayer]}`;
+    currentPlayerName.textContent = players[currentPlayer];
+
     for (let z = 1; z <= 7; z++) {
       const input = document.getElementById(`zone${z}Input`);
       input.value = playerScores[currentPlayer][z - 1] || 0;
+
       const radios = document.getElementsByName(`zone${z}Species`);
       if (radios) {
         radios.forEach(
@@ -146,6 +154,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (nextIndex !== -1) currentPlayer = nextIndex;
     loadScores();
     updateAvatars();
+    updateCurrentPlayerName();
     checkButtons();
   });
 
@@ -260,6 +269,7 @@ document.addEventListener("DOMContentLoaded", () => {
     finishBtn.style.display = "none";
     loadScores();
     updateAvatars();
+    updateCurrentPlayerName();
     bootstrap.Modal.getInstance(winnerModalEl)?.hide();
   });
 
@@ -272,6 +282,20 @@ document.addEventListener("DOMContentLoaded", () => {
   );
   [...tooltipTriggerList].forEach((el) => new bootstrap.Tooltip(el));
 
+  function trackingLangChange(lang) {
+    let params = new URLSearchParams(window.location.search);
+    params.set("lang", lang);
+
+    if (window.players && Array.isArray(window.players)) {
+      window.players.forEach((name, idx) => {
+        params.set("players[" + idx + "]", name);
+      });
+    }
+
+    window.location.search = params.toString();
+  }
+
   loadScores();
   updateAvatars();
+  updateCurrentPlayerName();
 });

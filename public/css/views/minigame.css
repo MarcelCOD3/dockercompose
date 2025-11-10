@@ -55,6 +55,7 @@ canvas {
 .dino-card:hover {
   transform: scale(1.1);
   border-color: #2c9c5c;
+  z-index: 1000;
 }
 
 .dino-card.selected {

@@ -1,7 +1,7 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background-color: #000; /* negro */
+  background-color: #000;
   color: #fff;
   display: flex;
   justify-content: center;
@@ -12,7 +12,7 @@ body {
 
 .error-container h1 {
   font-size: 6rem;
-  color: #ff6700; /* naranja */
+  color: #ff6700;
   margin: 0;
 }
 

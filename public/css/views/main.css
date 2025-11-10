@@ -338,6 +338,7 @@ body {
     gap: 8px;
     padding: 0 8px;
   }
+
   .indicator.active {
     width: 28px;
   }
@@ -347,13 +348,16 @@ body {
   .hero-title {
     font-size: 1.6rem;
   }
+
   .hero-subtitle {
     font-size: 1rem;
   }
+
   .carousel-indicators {
     bottom: 3.2vh;
     gap: 8px;
   }
+
   .hero-buttons {
     top: 66%;
   }
@@ -364,6 +368,7 @@ body {
     top: 42%;
     transform: translate(-50%, -42%);
   }
+
   .hero-buttons {
     top: 58%;
   }

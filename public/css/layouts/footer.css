@@ -1,5 +1,5 @@
 .footer-custom {
-  background-color: var(--bg); /* igual al navbar */
+  background-color: var(--bg);
   backdrop-filter: blur(10px);
   border-top: 2px solid var(--primary);
   padding: 1rem 0;
@@ -9,7 +9,6 @@
   box-shadow: 0 -3px 10px var(--shadow);
 }
 
-/* contenido en una sola línea */
 .footer-content {
   display: flex;
   justify-content: space-between;
@@ -18,18 +17,17 @@
   gap: 1rem;
 }
 
-/* logo */
 .footer-logo span {
   font-size: 1.3rem;
   font-weight: 700;
   color: var(--primary);
 }
 
-/* redes sociales */
 .social-links {
   display: flex;
   gap: 15px;
 }
+
 .social-links a {
   display: flex;
   align-items: center;
@@ -43,24 +41,30 @@
   background-color: var(--bg);
   transition: all 0.3s ease;
 }
+
 .social-links a:hover {
   background-color: var(--primary);
   color: var(--text-button);
   transform: translateY(-2px);
   box-shadow: 0 0 8px var(--shadow);
 }
+
 .social-links a i {
   color: inherit !important;
 }
 
-/* copyright */
 .footer-copy {
   color: var(--primary);
   font-weight: 500;
-  white-space: nowrap; /* evita salto de línea */
+  white-space: nowrap;
 }
 
-/* responsive */
+footer i,
+footer .fa,
+footer .fab {
+  color: #ff6f00;
+}
+
 @media (max-width: 768px) {
   .footer-content {
     flex-direction: column;
