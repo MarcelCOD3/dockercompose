@@ -10,10 +10,12 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use Dotenv\Dotenv;
 
-class MessageController {
+class MessageController
+{
     private $db;
 
-    public function __construct() {
+    public function __construct()
+    {
         global $db;
         $this->db = $db;
         if (file_exists(__DIR__ . '/../../.env')) {
@@ -22,8 +24,8 @@ class MessageController {
         }
     }
 
-    public function sendMessage($name, $email, $message) {
-        // Verificar si ya envió un mensaje hoy
+    public function sendMessage($name, $email, $message)
+    {
         $stmt = $this->db->prepare("
             SELECT COUNT(*) 
             FROM ContactMessages 
@@ -40,10 +42,9 @@ class MessageController {
             return false;
         }
 
-        // Enviar correo
         $mail = new PHPMailer();
         $mail->isSMTP();
-        $mail->SMTPDebug = SMTP::DEBUG_OFF; // DEBUG_OFF para no mostrar debug
+        $mail->SMTPDebug = SMTP::DEBUG_OFF;
         $mail->Host = $_ENV['SMTP_HOST'];
         $mail->Port = $_ENV['SMTP_PORT'];
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
@@ -57,7 +58,6 @@ class MessageController {
         $mail->Body = "Nombre: $name\nEmail: $email\nMensaje:\n$message";
 
         if ($mail->send()) {
-            // Guardar en base de datos
             $stmt = $this->db->prepare("
                 INSERT INTO ContactMessages (name, email, message) 
                 VALUES (?, ?, ?)
@@ -79,11 +79,10 @@ class MessageController {
     }
 }
 
-// Procesar POST desde el formulario
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['name'], $_POST['email'], $_POST['message']) && $page === 'about') {
     $controller = new MessageController();
     $controller->sendMessage($_POST['name'], $_POST['email'], $_POST['message']);
-    
+
     header("Location: /public/index.php?page=about#contact");
     exit();
 }

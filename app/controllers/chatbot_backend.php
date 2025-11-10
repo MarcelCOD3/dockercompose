@@ -18,10 +18,10 @@ try {
         echo json_encode(['reply' => 'Por favor, escribe un mensaje.']);
         exit;
     }
-    $geminiApiKey = "AIzaSyBr5wxFPYlPAs9auqd6eMyiSb91P3E9iyw"; 
+    $geminiApiKey = "AIzaSyBr5wxFPYlPAs9auqd6eMyiSb91P3E9iyw";
 
     $geminiApiUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key=" . $geminiApiKey;
-    
+
     $system_prompt = "Eres Hugo, un chatbot experto y amigable del juego de mesa Draftosaurus. Tu único propósito es responder preguntas sobre las reglas, componentes o estrategias de Draftosaurus. Si te preguntan algo que no tiene nada que ver, responde amablemente que solo sabes sobre el juego Draftosaurus. Responde de forma concisa. Pregunta del usuario:";
     $payload = json_encode([
         "contents" => [
@@ -38,13 +38,13 @@ try {
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
     curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); 
-    
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+
     $response = curl_exec($ch);
     $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
     curl_close($ch);
 
-    $botResponse = ''; // Variable de la respuesta
+    $botResponse = '';
 
     // --- Procesar la respuesta de la API ---
     if ($response !== false && $httpcode == 200) {
@@ -54,17 +54,15 @@ try {
             $botResponse = $responseData['candidates'][0]['content']['parts'][0]['text'];
         }
     }
-    
+
     // --- Fallback por si la API falla ---
     if (empty($botResponse)) {
         $botResponse = "Lo siento, estoy teniendo problemas para conectarme en este momento. Por favor, inténtalo de nuevo más tarde.";
     }
 
-    // --- Enviar la respuesta final al frontend ---
     echo json_encode(['reply' => $botResponse]);
 
 } catch (Exception $e) {
-    // Captura cualquier otro error inesperado
     http_response_code(500);
     echo json_encode(['reply' => "Error interno del servidor: " . $e->getMessage()]);
 }

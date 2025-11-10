@@ -1,5 +1,15 @@
 <?php
 $langTexts = [
+    //Views Titles
+    'mainTitle' => 'Home',
+    'rulesTitle' => 'Rules',
+    'rankingTitle' => 'Ranking',
+    'registerTitle' => 'Register',
+    'minigameTitle' => 'Dino-Runner',
+    'aboutTitle' => 'About Us',
+    'adminpanelTitle' => 'Admin Panel',
+    'gameTitle' => 'Game',
+
     // Navbar
     'home' => 'Home',
     'rules' => 'Rules',
@@ -14,7 +24,7 @@ $langTexts = [
     'spanish' => 'Spanish',
     'about' => 'About Us',
     'dino runner' => 'Dino Runner',
-    
+
 
     // Títulos / tooltips
     'goToHome' => 'Go to Home',
@@ -102,7 +112,7 @@ $langTexts = [
     'terms_contact_title' => '8. Contact and Support',
     'terms_contact_text' => 'For questions, problems or inquiries, you can contact us at <a href="mailto:softwarexstudio@gmail.com">softwarexstudio@gmail.com</a>.',
     'close' => 'Close',
-    
+
     //404.php
     '404_heading' => 'Oops! Page not found',
     '404_button' => 'Go back home',
@@ -122,12 +132,12 @@ $langTexts = [
     'altCarousel3' => 'Kids playing together',
 
     // Hero títulos y subtítulos
-    'heroTitle1' => 'A GAME FOR THE WHOLE FAMILY',
-    'heroSubtitle1' => 'Have fun with our dinosaurs and devour your friends.',
-    'heroTitle2' => 'STRATEGY AND FUN',
-    'heroSubtitle2' => 'Collect dinosaurs and build the best Jurassic park.',
-    'heroTitle3' => 'UNFORGETTABLE MOMENTS',
-    'heroSubtitle3' => 'Create epic memories with your family and friends.',
+    'heroTitle1' => 'A DINO-GAME FOR THE WHOLE FAMILY',
+    'heroSubtitle1' => 'Have fun with our dinos and devour your dino-friends.',
+    'heroTitle2' => 'DINO-STRATEGY AND DINO-FUN',
+    'heroSubtitle2' => 'Use your dinosaurs well to win the dino-game.',
+    'heroTitle3' => 'UNFORGETTABLE DINO-MOMENTS',
+    'heroSubtitle3' => 'Create epic memories with your dino-family and dino-friends.',
 
     // Botones debajo del carrusel
     'tracking' => 'Tracking',
@@ -141,15 +151,16 @@ $langTexts = [
     'players' => 'players',
 
     // Features
-    'featureEasyTitle' => 'Easy to learn',
-    'featureEasyText' => 'Simple rules everyone can understand in minutes',
-    'featureFastTitle' => 'Fast and dynamic',
-    'featureFastText' => '15-minute games full of exciting decisions',
-    'featureFamilyTitle' => 'For the whole family',
-    'featureFamilyText' => 'From 8 to 99 years old, guaranteed fun for everyone',
+
+    '  featureEasyTitle' => 'Easy to Dino-learn',
+    '  featureEasyText' => 'Simple rules everyone can understand in minutes',
+    '  featureFastTitle' => 'Fast and Dino-dynamic',
+    '  featureFastText' => 'Approx 15-minute games full of exciting decisions',
+    '  featureFamilyTitle' => 'For the whole Dino-family',
+    'featureFamilyText' => 'From 8 to 99 years old, guaranteed fun for all',
 
     'goSlide1' => 'Go to slide 1',
-    'goSlide2' => 'Go to slide 2',  
+    'goSlide2' => 'Go to slide 2',
     'goSlide3' => 'Go to slide 3',
 
     //Register
@@ -160,7 +171,7 @@ $langTexts = [
     'password' => 'Enter your password',
     'confirm_password' => 'Confirm your password',
     'terms_accept' => 'I accept the ',
-    'terms_link' => 'Terms and Conditions', 
+    'terms_link' => 'Terms and Conditions',
 
     // MiniGame
     'minigame-title' => 'Dino Runner',
@@ -170,4 +181,114 @@ $langTexts = [
     'energy' => 'Energy',
     'no_dinosaurs' => 'You have no dinosaurs available.',
     'start_game' => 'Start Game',
+
+    // Admin Panel
+    'adminPanelTitle' => 'Admin Panel',
+    'registeredUsers' => 'Registered Users',
+    'nickname' => 'Nickname',
+    'firstName' => 'First Name',
+    'lastName' => 'Last Name',
+    'email' => 'Email',
+    'role' => 'Role',
+    'status' => 'Status',
+    'bannedUntil' => 'Banned Until',
+    'actions' => 'Actions',
+    'searchUserPlaceholder' => 'Search user by nickname or email...',
+    'playerRole' => 'Player',
+    'adminRole' => 'Admin',
+    'active' => 'Active',
+    'inactive' => 'Inactive',
+    'editUser' => 'Edit User',
+    'deleteUser' => 'Delete User',
+    'confirmDelete' => 'Delete user?',
+    'banUser' => 'Ban User',
+    'unbanUser' => 'Unban User',
+    'banDays' => 'days',
+    'newPassword' => 'New Password (optional)',
+    'leaveEmpty' => 'Leave empty to keep current',
+    'saveChanges' => 'Save Changes',
+    'close' => 'Close',
+    'userUpdated' => "User '%s' updated successfully.",
+
+    // Game.php
+    'boardOf' => 'Board of',
+    'comingSoon' => 'Coming soon',
+    'underConstruction' => 'under construction',
+    'undo' => 'Undo',
+    'redo' => 'Redo',
+    'saveGame' => 'Save Game',
+
+    // About.php
+
+    'aboutTitle' => 'Draftosaurus - About Us',
+    'about_us_title' => 'About Us',
+    'about_us_paragraph' => 'Software-X Studio is a technology-based startup focused on developing digital solutions for entertainment and education. It is composed of a multidisciplinary team of young IT and design professionals, whose proposal combines innovation, accessibility, and user experience. The initial project consists of creating a web application called Draftosaurus App, a tool to support Draftosaurus board game sessions. This application automates scoring, applies game rules, and manages sessions, enhancing the players’ experience without replacing the physical interaction of the game.',
+
+    'mission_title' => 'Mission',
+    'mission_text' => 'Provide creative and efficient digital solutions that enhance the user game experience, with special attention to design, functionality, and teamwork.',
+
+    'vision_title' => 'Vision',
+    'vision_text' => 'Be recognized as an innovative company in the software sector applied to entertainment and learning, maintaining a strong, fun, and professional identity.',
+
+    'team_title' => 'Our Team',
+    'team_member_marcos' => 'Marcos Sierra',
+    'team_marcos_desc' => 'Project coordinator and creative designer. Leads the team and ensures that every delivery maintains the project identity.',
+    'team_member_juan' => 'Juan Alonso',
+    'team_juan_desc' => 'Sub-coordinator and operations manager. Organizes planning and team communication efficiently.',
+    'team_member_marcel' => 'Marcel Barrios',
+    'team_marcel_desc' => 'Technical programmer and infrastructure specialist. Responsible for system stability and functionality.',
+    'team_member_vega' => 'Marcos Vega',
+    'team_vega_desc' => 'Creative programmer. Develops the interface and contributes innovative ideas to enhance user experience.',
+
+    'location_title' => 'Location',
+    'location_address' => 'Colonia 2234, Montevideo, Uruguay',
+    'location_site_text' => 'Sinergia website:',
+    'location_site_link' => 'sinergia.uy/on-demand',
+
+    'contact_title' => 'Contact',
+    'contact_text' => 'Do you have ideas, suggestions, or want to collaborate? Write to us.',
+    'contact_name' => 'Name:',
+    'contact_name_ph' => 'Your name...',
+    'contact_email' => 'Email:',
+    'contact_email_ph' => 'yourname@email.com',
+    'contact_message' => 'Message:',
+    'contact_message_ph' => 'Write your message...',
+    'contact_send' => 'Send Message',
+    'contact_send_title' => 'Send Message',
+
+    'chatbot_help_btn' => 'Help',
+    'chatbot_help_title' => 'Help',
+    'chat_with_hugo' => 'Chat with Hugo',
+    'close' => 'Close',
+
+    // Chatbot.php
+
+    'hugo_name' => 'Hugo',
+    'hugo_description' => 'Your assistant for Draftosaurus',
+    'hugo_online' => 'Online',
+    'bot_greeting' => 'Hi, I\'m Hugo. How can I help you?',
+    'user_input_placeholder' => 'Type your question to Hugo...',
+    'send_button' => 'Send',
+
+    // Tracking.php
+
+    'trackingTitle' => 'Tracking - Draftosaurus',
+    'dinoScore' => 'Dino-Score of',
+    'zone1Label' => 'Dino-Forest of Similarity',
+    'zone2Label' => 'The Dino-Trio Grove',
+    'zone3Label' => 'Dino-Meadow of Love',
+    'zone4Label' => 'Dino-King of the Jungle',
+    'zone5Label' => 'Dino-Meadow of Difference',
+    'zone6Label' => 'Dino-Solitary Island',
+    'zone7Label' => 'Dino-River of Life',
+    'nextBtn' => 'Next',
+    'finishBtn' => 'Finish',
+    'winnerTitle' => 'Winner(s)',
+    'newGameBtn' => 'New Dino-Game',
+    'backHomeBtn' => 'Back to Dino-Home',
+    'nextBtnTitle' => 'Go to next round',
+    'finishBtnTitle' => 'Finish tracking',
+    'newGameBtnTitle' => 'Start a new game',
+    'backHomeBtnTitle' => 'Go back to home'
+
 ];

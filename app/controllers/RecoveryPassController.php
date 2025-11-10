@@ -7,11 +7,13 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use Dotenv\Dotenv;
 
-class RecoveryPassController {
+class RecoveryPassController
+{
     private $recoveryModel;
     private $userModel;
 
-    public function __construct() {
+    public function __construct()
+    {
         require_once __DIR__ . '/../../vendor/autoload.php';
 
         $this->recoveryModel = new RecoveryPassModel();
@@ -25,9 +27,11 @@ class RecoveryPassController {
     }
 
     // Enviar correo de recuperación
-    public function sendResetEmail($email) {
+    public function sendResetEmail($email)
+    {
         $user = $this->userModel->getUserByEmail($email);
-        if (!$user) return false;
+        if (!$user)
+            return false;
 
         $token = bin2hex(random_bytes(16));
         $this->recoveryModel->createToken($user['user_id'], $token);
@@ -52,12 +56,14 @@ class RecoveryPassController {
     }
 
     // Verificar token válido
-    public function verifyToken($token) {
+    public function verifyToken($token)
+    {
         return $this->recoveryModel->getUserByToken($token);
     }
 
     // Actualizar contraseña y marcar token usado
-    public function updatePassword($user_id, $newPassword, $token) {
+    public function updatePassword($user_id, $newPassword, $token)
+    {
         $hashed = password_hash($newPassword, PASSWORD_DEFAULT);
         $this->userModel->updatePassword($user_id, $hashed);
         $this->recoveryModel->markTokenUsed($token);

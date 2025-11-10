@@ -10,8 +10,6 @@ class AdminController {
 
     public function getAllUsers() {
         return $this->userModel->getAllUsers();
-
-        
     }
 
     public function deleteUser($nickname) {
@@ -33,10 +31,5 @@ public function banUser($nickname, $bannedUntil) {
 public function editUser($nickname, $firstName, $lastName, $email, $isAdmin, $password = null) {
     return $this->userModel->editUser($nickname, $firstName, $lastName, $email, $isAdmin, $password);
 }
-
-
-
 }
-
-
 ?>
