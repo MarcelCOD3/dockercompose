@@ -2,9 +2,8 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-
-// Cargar textos según idioma
-require_once $_SERVER['DOCUMENT_ROOT'] . '/app/assets/languages/loadLanguage.php';?>
+$lang = $_SESSION['lang'] ?? 'es';
+?>
 
 <!DOCTYPE html>
 <html lang="<?= $_SESSION['lang'] ?? 'es' ?>">

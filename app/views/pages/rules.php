@@ -12,7 +12,7 @@ unset($_SESSION['loginError'], $_SESSION['showLoginModal']);
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Draftosaurus - <?= $langTexts['rulesHeader'] ?></title>
+    <title><?= $langTexts['rulesTitle'] ?? 'Draftosaurus - Rules' ?></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
@@ -58,39 +58,39 @@ unset($_SESSION['loginError'], $_SESSION['showLoginModal']);
 
             <div class="rules-galery text-center mb-5">
                 <?php if ($lang === 'en'): ?>
-                <img src="/public/img/rules1.png" class="rules mb-3" id="index" alt="Game Rules Page 1">
-                <img src="/public/img/rules2.png" class="rules mb-3" id="setup" alt="Game Rules Page 2">
-                <img src="/public/img/rules3.png" class="rules mb-3" id="gameplay" alt="Game Rules Page 3">
-                <img src="/public/img/rules4.png" class="rules mb-3" id="dinosaurpens"
-                    alt="Game Rules Page 4">
-                <img src="/public/img/rules5.png" class="rules mb-3" id="summer" alt="Game Rules Page 5">
-                <img src="/public/img/rules6.png" class="rules mb-3" id="dice" alt="Game Rules Page 6">
-                <img src="/public/img/rules7.png" class="rules mb-3" id="winter" alt="Game Rules Page 7">
-                <img src="/public/img/rules8.png" class="rules mb-3" id="extra" alt="Game Rules Page 8">
+                    <img src="/public/img/rules1.png" class="rules mb-3" id="index" alt="Game Rules Page 1">
+                    <img src="/public/img/rules2.png" class="rules mb-3" id="setup" alt="Game Rules Page 2">
+                    <img src="/public/img/rules3.png" class="rules mb-3" id="gameplay" alt="Game Rules Page 3">
+                    <img src="/public/img/rules4.png" class="rules mb-3" id="dinosaurpens"
+                        alt="Game Rules Page 4">
+                    <img src="/public/img/rules5.png" class="rules mb-3" id="summer" alt="Game Rules Page 5">
+                    <img src="/public/img/rules6.png" class="rules mb-3" id="dice" alt="Game Rules Page 6">
+                    <img src="/public/img/rules7.png" class="rules mb-3" id="winter" alt="Game Rules Page 7">
+                    <img src="/public/img/rules8.png" class="rules mb-3" id="extra" alt="Game Rules Page 8">
                 <?php else: ?>
-                <img src="/public/img/reglas1.png" class="rules mb-3" id="index" alt="Reglamento Pagina 1">
-                <img src="/public/img/reglas2.png" class="rules mb-3" id="setup" alt="Reglamento Pagina 2">
-                <img src="/public/img/reglas3.png" class="rules mb-3" id="gameplay"
-                    alt="Reglamento Pagina 3">
-                <img src="/public/img/reglas4.png" class="rules mb-3" id="dinosaurpens"
-                    alt="Reglamento Pagina 4">
-                <img src="/public/img/reglas5.png" class="rules mb-3" id="summer"
-                    alt="Reglamento Pagina 5">
-                <img src="/public/img/reglas6.png" class="rules mb-3" id="dice" alt="Reglamento Pagina 6">
-                <img src="/public/img/reglas7.png" class="rules mb-3" id="winter"
-                    alt="Reglamento Pagina 7">
-                <img src="/public/img/reglas8.png" class="rules mb-3" id="extra" alt="Reglamento Pagina 8">
+                    <img src="/public/img/reglas1.png" class="rules mb-3" id="index" alt="Reglamento Pagina 1">
+                    <img src="/public/img/reglas2.png" class="rules mb-3" id="setup" alt="Reglamento Pagina 2">
+                    <img src="/public/img/reglas3.png" class="rules mb-3" id="gameplay"
+                        alt="Reglamento Pagina 3">
+                    <img src="/public/img/reglas4.png" class="rules mb-3" id="dinosaurpens"
+                        alt="Reglamento Pagina 4">
+                    <img src="/public/img/reglas5.png" class="rules mb-3" id="summer"
+                        alt="Reglamento Pagina 5">
+                    <img src="/public/img/reglas6.png" class="rules mb-3" id="dice" alt="Reglamento Pagina 6">
+                    <img src="/public/img/reglas7.png" class="rules mb-3" id="winter"
+                        alt="Reglamento Pagina 7">
+                    <img src="/public/img/reglas8.png" class="rules mb-3" id="extra" alt="Reglamento Pagina 8">
                 <?php endif; ?>
             </div>
 
             <div class="container mb-5" id="video">
                 <div class="ratio ratio-16x9">
                     <?php if ($lang === 'en'): ?>
-                    <iframe src="https://www.youtube.com/embed/a5pegumye6E" title="Draftosaurus - Tutorial (English)"
-                        allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/a5pegumye6E" title="Draftosaurus - Tutorial (English)"
+                            allowfullscreen></iframe>
                     <?php else: ?>
-                    <iframe src="https://www.youtube.com/embed/-ZyFqRNkiAU" title="Draftosaurus - Tutorial (Español)"
-                        allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/-ZyFqRNkiAU" title="Draftosaurus - Tutorial (Español)"
+                            allowfullscreen></iframe>
                     <?php endif; ?>
                 </div>
             </div>
@@ -106,20 +106,20 @@ unset($_SESSION['loginError'], $_SESSION['showLoginModal']);
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-    const scrollBtn = document.getElementById("scrollTopBtn");
-    window.onscroll = function() {
-        if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-            scrollBtn.style.display = "block";
-        } else {
-            scrollBtn.style.display = "none";
-        }
-    };
-    scrollBtn.addEventListener("click", () => {
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
+        const scrollBtn = document.getElementById("scrollTopBtn");
+        window.onscroll = function () {
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                scrollBtn.style.display = "block";
+            } else {
+                scrollBtn.style.display = "none";
+            }
+        };
+        scrollBtn.addEventListener("click", () => {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
         });
-    });
     </script>
 </body>
 

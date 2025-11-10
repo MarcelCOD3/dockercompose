@@ -7,18 +7,17 @@ $lang = $_SESSION['lang'] ?? 'es';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/app/controllers/UserController.php';
 $userController = new UserController();
 
-// Manejar registro
 $registerError = '';
 $registerSuccess = false;
-$prevData = ['nickname'=>'','first_name'=>'','last_name'=>'','email'=>''];
+$prevData = ['nickname' => '', 'first_name' => '', 'last_name' => '', 'email' => ''];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register'])) {
     $data = [
-        'nickname'   => trim($_POST['nickname'] ?? ''),
+        'nickname' => trim($_POST['nickname'] ?? ''),
         'first_name' => trim($_POST['first_name'] ?? ''),
-        'last_name'  => trim($_POST['last_name'] ?? ''),
-        'email'      => trim($_POST['email'] ?? ''),
-        'password'   => $_POST['password'] ?? ''
+        'last_name' => trim($_POST['last_name'] ?? ''),
+        'email' => trim($_POST['email'] ?? ''),
+        'password' => $_POST['password'] ?? ''
     ];
 
     $prevData = $data;
@@ -30,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register'])) {
         $result = $userController->register($data);
         if ($result['success']) {
             $registerSuccess = true;
-            $prevData = ['nickname'=>'','first_name'=>'','last_name'=>'','email'=>''];
+            $prevData = ['nickname' => '', 'first_name' => '', 'last_name' => '', 'email' => ''];
         } else {
             $registerError = $result['error'] ?? $langTexts['register_error'];
         }
@@ -44,14 +43,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Draftosaurus - <?= $langTexts['register_title'] ?></title>
+    <title><?= $langTexts['registerTitle'] ?? 'Draftosaurus - Register' ?></title>
 
-    <!-- Bootstrap y FontAwesome -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-
-    <!-- Estilos propios -->
     <link rel="stylesheet" href="/public/css/styles.css">
     <link rel="stylesheet" href="/public/css/layouts/navbar.css">
     <link rel="stylesheet" href="/public/css/views/register.css">
@@ -70,16 +66,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register'])) {
                 <div class="col-md-8">
                     <div class="card shadow-sm profile-card">
                         <div class="card-body">
-                            <?php if($registerError): ?>
-                            <div class="alert alert-danger"><?= htmlspecialchars($registerError) ?></div>
-                            <?php elseif($registerSuccess): ?>
-                            <div class="alert alert-success"><?= $langTexts['register_success'] ?></div>
+                            <?php if ($registerError): ?>
+                                <div class="alert alert-danger"><?= htmlspecialchars($registerError) ?></div>
+                            <?php elseif ($registerSuccess): ?>
+                                <div class="alert alert-success"><?= $langTexts['register_success'] ?></div>
                             <?php endif; ?>
 
                             <form method="POST" id="registerForm" novalidate>
                                 <input type="hidden" name="register" value="1">
 
-                                <!-- Nickname -->
                                 <div class="mb-3">
                                     <label for="nickname" class="form-label"><?= $langTexts['nickname'] ?></label>
                                     <div class="input-group">
@@ -92,7 +87,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register'])) {
                                     </div>
                                 </div>
 
-                                <!-- First Name -->
                                 <div class="mb-3">
                                     <label for="first_name" class="form-label"><?= $langTexts['first_name'] ?></label>
                                     <div class="input-group">
@@ -104,7 +98,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register'])) {
                                     </div>
                                 </div>
 
-                                <!-- Last Name -->
                                 <div class="mb-3">
                                     <label for="last_name" class="form-label"><?= $langTexts['last_name'] ?></label>
                                     <div class="input-group">
@@ -116,7 +109,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register'])) {
                                     </div>
                                 </div>
 
-                                <!-- Email -->
                                 <div class="mb-3">
                                     <label for="email" class="form-label"><?= $langTexts['email'] ?></label>
                                     <div class="input-group">
@@ -128,7 +120,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register'])) {
                                     </div>
                                 </div>
 
-                                <!-- Password -->
                                 <div class="mb-3">
                                     <label for="password" class="form-label"><?= $langTexts['password'] ?></label>
                                     <div class="input-group">
@@ -143,7 +134,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register'])) {
                                     </div>
                                 </div>
 
-                                <!-- Confirm Password -->
                                 <div class="mb-3">
                                     <label for="confirmPassword"
                                         class="form-label"><?= $langTexts['confirm_password'] ?></label>
@@ -159,7 +149,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register'])) {
                                     </div>
                                 </div>
 
-                                <!-- Accept Terms -->
                                 <div class="mb-3 form-check">
                                     <input type="checkbox" class="form-check-input" id="acceptTerms">
                                     <label class="form-check-label" for="acceptTerms">
@@ -171,7 +160,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register'])) {
                                     </label>
                                 </div>
 
-                                <!-- Submit -->
                                 <button type="submit" class="btn btn-custom w-100" id="registerBtn" disabled
                                     title="<?= $langTexts['register_button'] ?>">
                                     <?= $langTexts['register_button'] ?>
@@ -186,7 +174,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register'])) {
 
         <?php include $_SERVER['DOCUMENT_ROOT'] . '/app/views/layouts/footer.php'; ?>
 
-        <!-- Terms Modal -->
         <div class="modal fade modal-dark" id="termsModal" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-lg">
                 <div class="modal-content modal-dark">

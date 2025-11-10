@@ -2,16 +2,19 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+$lang = $_SESSION['lang'] ?? 'es';
 
-$players = $_POST['players'] ?? [];
+$playersRaw = $_POST['players'] ?? [];
+$players = array_map(fn($p) => is_array($p) ? ($p['name'] ?? 'Jugador') : $p, $playersRaw);
+
 ?>
 <!DOCTYPE html>
-<html lang="es">
+
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tracking - Draftosaurus</title>
+    <title><?= $langTexts['trackingTitle'] ?></title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
@@ -28,32 +31,31 @@ $players = $_POST['players'] ?? [];
         <?php include $_SERVER['DOCUMENT_ROOT'] . '/app/views/layouts/navbar.php'; ?>
 
         <main class="container flex-grow-1 my-5">
-            <h2 class="text-center mb-4" id="currentPlayerTitle">Dino-Puntaje</h2>
-
-            <!-- Avatares -->
+            <h2 class="text-center mb-4" id="currentPlayerTitle">
+                <span id="currentPlayerLabel"><?= $langTexts['dinoScore'] ?? 'Dino-Puntaje' ?></span>
+                <span id="currentPlayerName"></span>
+            </h2>
             <div class="d-flex justify-content-center gap-3 mb-4 flex-wrap" id="avatarsContainer"></div>
 
-            <!-- Zonas fijas -->
             <div id="zonesContainer" class="mt-4">
                 <div class="zone" id="zone1">
-                    <label for="zone1Input" class="form-label">El Dino-Bosque de la Dino-Semejanza</label>
+                    <label for="zone1Input" class="form-label"><?= $langTexts['zone1Label'] ?></label>
                     <div class="zone-input-group">
                         <input type="number" id="zone1Input" class="form-control" min="0" max="6" />
                         <i class="bi bi-info-circle-fill info-icon" data-bs-toggle="tooltip" data-bs-placement="right"
                             title="Este recinto solo acepta dinos de una misma especie,
-                            1 Dino + 2 Puntos,
-                            2 Dinos Iguales + 4 Puntos,
-                            3 Dinos Iguales + 8 Puntos,
-                            4 Dinos Iguales + 12 Puntos,
-                            5 Dinos Iguales + 18 Puntos,
-                            6 Dinos Iguales + 24 Puntos,
-                          
-                            Coloca la cantidad de dinos de la misma especie."></i>
+1 Dino + 2 Puntos,
+2 Dinos Iguales + 4 Puntos,
+3 Dinos Iguales + 8 Puntos,
+4 Dinos Iguales + 12 Puntos,
+5 Dinos Iguales + 18 Puntos,
+6 Dinos Iguales + 24 Puntos,
+Coloca la cantidad de dinos de la misma especie."></i>
                     </div>
                 </div>
 
                 <div class="zone" id="zone2">
-                    <label for="zone2Input" class="form-label">El Trío Dino-Frondoso</label>
+                    <label for="zone2Input" class="form-label"><?= $langTexts['zone2Label'] ?></label>
                     <div class="zone-input-group">
                         <input type="number" id="zone2Input" class="form-control" min="0" max="1" />
                         <i class="bi bi-info-circle-fill info-icon" data-bs-toggle="tooltip" data-bs-placement="right"
@@ -62,7 +64,7 @@ $players = $_POST['players'] ?? [];
                 </div>
 
                 <div class="zone" id="zone3">
-                    <label for="zone3Input" class="form-label">La Dino-Pradera del Dino-Amor</label>
+                    <label for="zone3Input" class="form-label"><?= $langTexts['zone3Label'] ?></label>
                     <div class="zone-input-group">
                         <input type="number" id="zone3Input" class="form-control" min="0" max="12" />
                         <i class="bi bi-info-circle-fill info-icon" data-bs-toggle="tooltip" data-bs-placement="right"
@@ -71,9 +73,8 @@ $players = $_POST['players'] ?? [];
                 </div>
 
                 <div class="zone" id="zone4">
-                    <label class="form-label">El Dino-Rey de la Dino-Selva</label>
+                    <label class="form-label"><?= $langTexts['zone4Label'] ?></label>
                     <div class="zone-input-group" style="flex-direction: column; align-items: center;">
-                        <!-- Contenedor de fichas -->
                         <div class="zone4-species-options d-flex gap-2 justify-content-center">
                             <label class="species-option">
                                 <input type="radio" name="zone4Species" value="Azul" />
@@ -103,38 +104,33 @@ $players = $_POST['players'] ?? [];
                                 <input type="radio" name="zone4Species" value="none" />
                                 <div class="no-dino">X</div>
                             </label>
-
                         </div>
 
                         <input type="number" id="zone4Input" class="form-control" min="0" max="12"
                             style="width: 70px;" />
-
                         <i class="bi bi-info-circle-fill info-icon" data-bs-toggle="tooltip" data-bs-placement="right"
                             title="Selecciona la especie de tu Dino-Rey y coloca la cantidad que tienes. Ganarás 7 puntos si eres quien más tiene de esa especie al final de la partida."></i>
                     </div>
                 </div>
 
-
-
                 <div class="zone" id="zone5">
-                    <label for="zone5Input" class="form-label">El Dino-Prado de la Dino-Diferencia</label>
+                    <label for="zone5Input" class="form-label"><?= $langTexts['zone5Label'] ?></label>
                     <div class="zone-input-group">
                         <input type="number" id="zone5Input" class="form-control" min="0" max="6" />
                         <i class="bi bi-info-circle-fill info-icon" data-bs-toggle="tooltip" data-bs-placement="right"
                             title="Este recinto solo acepta dinos de diferente especie,
-                            1 Dino + 1 Punto,
-                            2 Dinos Diferentes + 3 Puntos,
-                            3 Dinos Diferentes + 6 Puntos,
-                            4 Dinos Diferentes + 10 Puntos,
-                            5 Dinos Diferentes + 15 Puntos,
-                            6 Dinos Diferentes + 21 Puntos,
-                          
-                            Coloca la cantidad de dinos de diferente especie."></i>
+1 Dino + 1 Punto,
+2 Dinos Diferentes + 3 Puntos,
+3 Dinos Diferentes + 6 Puntos,
+4 Dinos Diferentes + 10 Puntos,
+5 Dinos Diferentes + 15 Puntos,
+6 Dinos Diferentes + 21 Puntos,
+Coloca la cantidad de dinos de diferente especie."></i>
                     </div>
                 </div>
 
                 <div class="zone" id="zone6">
-                    <label for="zone6Input" class="form-label">La Dino-Isla Dino-Solitaria</label>
+                    <label for="zone6Input" class="form-label"><?= $langTexts['zone6Label'] ?></label>
                     <div class="zone-input-group">
                         <input type="number" id="zone6Input" class="form-control" min="0" max="1" />
                         <i class="bi bi-info-circle-fill info-icon" data-bs-toggle="tooltip" data-bs-placement="right"
@@ -143,7 +139,7 @@ $players = $_POST['players'] ?? [];
                 </div>
 
                 <div class="zone" id="zone7">
-                    <label for="zone7Input" class="form-label">El Dino-Rio de la Dino-Vida</label>
+                    <label for="zone7Input" class="form-label"><?= $langTexts['zone7Label'] ?></label>
                     <div class="zone-input-group">
                         <input type="number" id="zone7Input" class="form-control" min="0" max="12" />
                         <i class="bi bi-info-circle-fill info-icon" data-bs-toggle="tooltip" data-bs-placement="right"
@@ -152,33 +148,34 @@ $players = $_POST['players'] ?? [];
                 </div>
             </div>
 
-            <!-- Botones principales -->
             <div class="d-flex justify-content-center gap-3 mt-4 position-relative">
-                <button class="btn btn-primary" id="nextBtn">Siguiente</button>
-                <button class="btn btn-success" id="finishBtn" style="display: none;">Finalizar</button>
+                <button class="btn btn-primary" id="nextBtn"
+                    title="<?= $langTexts['nextBtnTitle'] ?>"><?= $langTexts['nextBtn'] ?></button>
+                <button class="btn btn-success" id="finishBtn" style="display: none;"
+                    title="<?= $langTexts['finishBtnTitle'] ?>"><?= $langTexts['finishBtn'] ?></button>
             </div>
         </main>
 
         <?php include $_SERVER['DOCUMENT_ROOT'] . '/app/views/layouts/footer.php'; ?>
     </div>
 
-    <!-- Modal ganador -->
     <div class="modal fade" id="winnerModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content text-center p-4">
-                <h2 id="winnerTitle" class="mb-3"></h2>
+                <h2 id="winnerTitle" class="mb-3"><?= $langTexts['winnerTitle'] ?></h2>
                 <div id="winnerList"></div>
                 <div class="d-flex justify-content-center gap-3 mt-3">
-                    <button class="btn btn-success" id="newGameBtn">Nueva Dino-Partida</button>
-                    <button class="btn btn-primary" id="closeWinnerBtn" data-bs-dismiss="modal">Volver al
-                        Dino-Inicio</button>
+                    <button class="btn btn-success" id="newGameBtn"
+                        title="<?= $langTexts['newGameBtnTitle'] ?>"><?= $langTexts['newGameBtn'] ?></button>
+                    <button class="btn btn-primary" id="closeWinnerBtn" data-bs-dismiss="modal"
+                        title="<?= $langTexts['backHomeBtnTitle'] ?>"><?= $langTexts['backHomeBtn'] ?></button>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-    const players = <?= json_encode($players) ?>;
+        const players = <?= json_encode($players) ?>;
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/public/js/tracking.js"></script>

@@ -6,14 +6,12 @@ $lang = $_SESSION['lang'] ?? 'es';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/app/controllers/UserController.php';
 $userController = new UserController();
 
-// Verificamos si se pasa un nickname por GET
 $nickname = $_GET['nickname'] ?? null;
 if (!$nickname) {
     header("Location: /public/index.php");
     exit();
 }
 
-// Obtener perfil completo con stats usando UserController
 $profile = $userController->getUserProfile($nickname);
 if (!$profile) {
     http_response_code(404);

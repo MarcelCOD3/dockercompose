@@ -11,7 +11,7 @@ $dinosaurs = $dinosaurModel->getAllDinosaurs();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dino Runner - Draftosaurus</title>
+    <title><?= $langTexts['minigameTitle'] ?? 'Draftosaurus - Dino-Runner' ?></title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
@@ -35,18 +35,19 @@ $dinosaurs = $dinosaurModel->getAllDinosaurs();
         <main class="container text-center flex-grow-1 py-4">
             <h1 class="minigame-title">Elige tu Runner</h1>
             <p class="minigame-subtitle">Pasa el mouse sobre un dinosaurio para ver sus estadísticas</p>
-            <button class="btn btn-sm btn-outline-light mt-3" id="change-music-btn" style="font-family: 'Press Start 2P', cursive; font-size: 0.7rem;">Música: Original</button>
-            
+            <button class="btn btn-sm btn-outline-light mt-3" id="change-music-btn"
+                style="font-family: 'Press Start 2P', cursive; font-size: 0.7rem;">Música: Original</button>
+
             <div id="dino-selector-gallery">
                 <?php foreach ($dinosaurs as $dino): ?>
-                <div class="dino-card" data-id="<?php echo htmlspecialchars($dino['dino_id']); ?>">
-                    <div class="dino-sprite-preview">
-                        <img src="/public/img/sprites/<?php echo htmlspecialchars($dino['sprite_frame1']); ?>"
-                            alt="<?php echo htmlspecialchars($dino['species']); ?>">
+                    <div class="dino-card" data-id="<?php echo htmlspecialchars($dino['dino_id']); ?>">
+                        <div class="dino-sprite-preview">
+                            <img src="/public/img/sprites/<?php echo htmlspecialchars($dino['sprite_frame1']); ?>"
+                                alt="<?php echo htmlspecialchars($dino['species']); ?>">
+                        </div>
+                        <div id="dino-tooltip">
+                        </div>
                     </div>
-                    <div id="dino-tooltip">
-                    </div>
-                </div>
                 <?php endforeach; ?>
             </div>
 
@@ -64,9 +65,11 @@ $dinosaurs = $dinosaurModel->getAllDinosaurs();
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-    const dinosaurs_data = <?php echo json_encode($dinosaurs); ?>;
+        const dinosaurs_data = <?php echo json_encode($dinosaurs); ?>;
     </script>
-   <script src="/public/js/dino_runner_game.js?v=<?php echo filemtime($_SERVER['DOCUMENT_ROOT'] . '/public/js/dino_runner_game.js'); ?>" defer></script>
+    <script
+        src="/public/js/dino_runner_game.js?v=<?php echo filemtime($_SERVER['DOCUMENT_ROOT'] . '/public/js/dino_runner_game.js'); ?>"
+        defer></script>
 </body>
 
 </html>

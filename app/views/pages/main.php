@@ -17,7 +17,7 @@ $isLoggedIn = !empty($_SESSION['nickname']);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= $langTexts['siteTitle'] ?? 'Draftosaurus - Juego de Mesa Digital' ?></title>
+    <title><?= $langTexts['mainTitle'] ?? 'Draftosaurus - Home' ?></title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
@@ -58,7 +58,7 @@ $isLoggedIn = !empty($_SESSION['nickname']);
                             <div class="carousel-content">
                                 <h1 class="hero-title"><?= $langTexts['heroTitle2'] ?? 'ESTRATEGIA Y DIVERSIÓN' ?></h1>
                                 <p class="hero-subtitle">
-                                    <?= $langTexts['heroSubtitle2'] ?? 'Colecciona dinosaurios y construye el mejor parque jurásico.' ?>
+                                    <?= $langTexts['heroSubtitle2'] ?? 'Comete a tus amigos.' ?>
                                 </p>
                             </div>
                         </div>
@@ -93,10 +93,10 @@ $isLoggedIn = !empty($_SESSION['nickname']);
                     </button>
 
                     <?php if ($isLoggedIn): ?>
-                    <a href="/public/index.php?page=game" class="btn btn-custom"
-                        title="<?= $langTexts['startGame'] ?? 'Comenzar Partida' ?>">
-                        <i class="fas fa-play me-2"></i><?= $langTexts['startGame'] ?? 'Comenzar Partida' ?>
-                    </a>
+                        <a href="/public/index.php?page=game" class="btn btn-custom"
+                            title="<?= $langTexts['startGame'] ?? 'Comenzar Partida' ?>">
+                            <i class="fas fa-play me-2"></i><?= $langTexts['startGame'] ?? 'Comenzar Partida' ?>
+                        </a>
                     <?php endif; ?>
                 </div>
             </section>

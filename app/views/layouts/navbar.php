@@ -1,5 +1,4 @@
 <?php
-// Inicia sesion solo si no hay ninguna sesion activa
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
@@ -7,10 +6,19 @@ if (session_status() === PHP_SESSION_NONE) {
 $nickname = $_SESSION['nickname'] ?? null;
 $page = basename($_GET['page'] ?? 'main');
 
-// Asegurarnos de que $langTexts (traductor) exista
 if (!isset($langTexts)) {
     $langTexts = [];
 }
+
+
+$params = $_GET;
+
+$params['lang'] = 'en';
+$urlEn = "/public/index.php?" . http_build_query($params);
+
+$params['lang'] = 'es';
+$urlEs = "/public/index.php?" . http_build_query($params);
+
 ?>
 
 <nav class="navbar navbar-expand-lg navbar-custom">
@@ -73,62 +81,82 @@ if (!isset($langTexts)) {
                         data-bs-toggle="dropdown" aria-expanded="false" title=<?= $langTexts['language'] ?? 'Idioma' ?>>
                         <i class="fas fa-globe me-1"></i><?= $langTexts['language'] ?? 'Idioma' ?>
                     </a>
+
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
-                        <li>
-                            <a class="dropdown-item" href="/public/index.php?page=<?= $page ?>&lang=en"
-                                title="<?= $langTexts['english'] ?? 'Inglés' ?>">
-                                <img src="/public/img/en-flag.jpg" alt="English" width="20" class="me-2">
-                                <?= $langTexts['english'] ?? 'Inglés' ?>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="/public/index.php?page=<?= $page ?>&lang=es"
-                                title="<?= $langTexts['spanish'] ?? 'Español' ?>">
-                                <img src="/public/img/es-flag.png" alt="Español" width="20" class="me-2">
-                                <?= $langTexts['spanish'] ?? 'Español' ?>
-                            </a>
-                        </li>
+                        <?php if ($page === 'tracking'): ?>
+                            <li>
+                                <a class="dropdown-item" href="#" onclick="trackingLangChange('en'); return false;"
+                                    title="<?= $langTexts['english'] ?? 'Inglés' ?>">
+                                    <img src="/public/img/en-flag.jpg" alt="English" width="20" class="me-2">
+                                    <?= $langTexts['english'] ?? 'Inglés' ?>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#" onclick="trackingLangChange('es'); return false;"
+                                    title="<?= $langTexts['spanish'] ?? 'Español' ?>">
+                                    <img src="/public/img/es-flag.png" alt="Español" width="20" class="me-2">
+                                    <?= $langTexts['spanish'] ?? 'Español' ?>
+                                </a>
+                            </li>
+                        <?php else: ?>
+                            <li>
+                                <a class="dropdown-item" href="<?= $urlEn ?>"
+                                    title="<?= $langTexts['english'] ?? 'Inglés' ?>">
+                                    <img src="/public/img/en-flag.jpg" alt="English" width="20" class="me-2">
+                                    <?= $langTexts['english'] ?? 'Inglés' ?>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="<?= $urlEs ?>"
+                                    title="<?= $langTexts['spanish'] ?? 'Español' ?>">
+                                    <img src="/public/img/es-flag.png" alt="Español" width="20" class="me-2">
+                                    <?= $langTexts['spanish'] ?? 'Español' ?>
+                                </a>
+                            </li>
+                        <?php endif; ?>
                     </ul>
+
+
                 </li>
             </ul>
         </div>
 
         <div class="ms-auto d-flex gap-2 align-items-center">
             <?php if (!empty($nickname)): ?>
-            <div class="dropdown">
-                <a class="btn btn-custom dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                    title="<?= $langTexts['myProfile'] ?? 'Mi Perfil' ?>">
-                    <i class="fas fa-user-circle me-2"></i><?= htmlspecialchars($nickname) ?>
-                </a>
-                <ul class="dropdown-menu dropdown-menu-end">
-                    <li>
-                        <a class="dropdown-item"
-                            href="/public/index.php?page=userProfile&nickname=<?= urlencode($nickname) ?>"
-                            title="<?= $langTexts['myProfile'] ?? 'Mi Perfil' ?>">
-                            <i class="fas fa-id-badge me-2"></i><?= $langTexts['myProfile'] ?? 'Mi Perfil' ?>
-                        </a>
-                    </li>
-                    <?php if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] == 1): ?>
-                    <li>
-                        <a class="dropdown-item" href="/public/index.php?page=adminPanel"
-                            title="<?= $langTexts['adminPanel'] ?? 'Panel Admin' ?>">
-                            <i class="fas fa-tools me-2"></i><?= $langTexts['adminPanel'] ?? 'Panel Admin' ?>
-                        </a>
-                    </li>
-                    <?php endif; ?>
-                    <form method="post" style="margin:0;">
-                        <button type="submit" name="logout" class="dropdown-item"
-                            title="<?= $langTexts['logout'] ?? 'Cerrar sesión' ?>">
-                            <i class="fas fa-sign-out-alt me-2"></i><?= $langTexts['logout'] ?? 'Cerrar sesión' ?>
-                        </button>
-                    </form>
-                </ul>
-            </div>
+                <div class="dropdown">
+                    <a class="btn btn-custom dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        title="<?= $langTexts['myProfile'] ?? 'Mi Perfil' ?>">
+                        <i class="fas fa-user-circle me-2"></i><?= htmlspecialchars($nickname) ?>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li>
+                            <a class="dropdown-item"
+                                href="/public/index.php?page=userProfile&nickname=<?= urlencode($nickname) ?>"
+                                title="<?= $langTexts['myProfile'] ?? 'Mi Perfil' ?>">
+                                <i class="fas fa-id-badge me-2"></i><?= $langTexts['myProfile'] ?? 'Mi Perfil' ?>
+                            </a>
+                        </li>
+                        <?php if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] == 1): ?>
+                            <li>
+                                <a class="dropdown-item" href="/public/index.php?page=adminPanel"
+                                    title="<?= $langTexts['adminPanel'] ?? 'Panel Admin' ?>">
+                                    <i class="fas fa-tools me-2"></i><?= $langTexts['adminPanel'] ?? 'Panel Admin' ?>
+                                </a>
+                            </li>
+                        <?php endif; ?>
+                        <form method="post" style="margin:0;">
+                            <button type="submit" name="logout" class="dropdown-item"
+                                title="<?= $langTexts['logout'] ?? 'Cerrar sesión' ?>">
+                                <i class="fas fa-sign-out-alt me-2"></i><?= $langTexts['logout'] ?? 'Cerrar sesión' ?>
+                            </button>
+                        </form>
+                    </ul>
+                </div>
             <?php else: ?>
-            <button class="btn btn-custom" data-bs-toggle="modal" data-bs-target="#loginModal"
-                title="<?= $langTexts['login'] ?? 'Iniciar sesión' ?>">
-                <i class="fas fa-door-open me-2"></i><?= $langTexts['login'] ?? 'Iniciar sesión' ?>
-            </button>
+                <button class="btn btn-custom" data-bs-toggle="modal" data-bs-target="#loginModal"
+                    title="<?= $langTexts['login'] ?? 'Iniciar sesión' ?>">
+                    <i class="fas fa-door-open me-2"></i><?= $langTexts['login'] ?? 'Iniciar sesión' ?>
+                </button>
 
             <?php endif; ?>
         </div>
@@ -136,13 +164,13 @@ if (!isset($langTexts)) {
 </nav>
 
 <?php if (!empty($_SESSION['showLoginModal'])): ?>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    var loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
-    loginModal.show();
-});
-</script>
-<?php unset($_SESSION['showLoginModal']); ?>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+            loginModal.show();
+        });
+    </script>
+    <?php unset($_SESSION['showLoginModal']); ?>
 <?php endif; ?>
 
 <div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
@@ -158,10 +186,10 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="modal-body">
                 <div id="login-alert">
                     <?php if (!empty($_SESSION['loginError'])): ?>
-                    <div class="alert alert-danger">
-                        <?= htmlspecialchars($_SESSION['loginError']) ?>
-                    </div>
-                    <?php unset($_SESSION['loginError']); ?>
+                        <div class="alert alert-danger">
+                            <?= htmlspecialchars($_SESSION['loginError']) ?>
+                        </div>
+                        <?php unset($_SESSION['loginError']); ?>
                     <?php endif; ?>
                 </div>
                 <form method="POST">
@@ -225,10 +253,10 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
             <div class="modal-body">
                 <?php if (!empty($_SESSION['forgotMessage'])): ?>
-                <div class="alert <?= $_SESSION['forgotClass'] ?? 'alert-info' ?> text-center">
-                    <?= $_SESSION['forgotMessage'] ?>
-                </div>
-                <?php unset($_SESSION['forgotMessage'], $_SESSION['forgotClass']); ?>
+                    <div class="alert <?= $_SESSION['forgotClass'] ?? 'alert-info' ?> text-center">
+                        <?= $_SESSION['forgotMessage'] ?>
+                    </div>
+                    <?php unset($_SESSION['forgotMessage'], $_SESSION['forgotClass']); ?>
                 <?php endif; ?>
 
                 <form method="POST" action="/public/index.php?page=forgotPassword">
