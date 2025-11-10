@@ -1,5 +1,15 @@
 <?php
 $langTexts = [
+    //Views Titles
+    'mainTitle' => 'Inicio',
+    'rulesTitle' => 'Reglas',
+    'rankingTitle' => 'Ranking',
+    'registerTitle' => 'Registro',
+    'minigameTitle' => 'Correcadinos',
+    'aboutTitle' => 'Sobre Nosotros',
+    'adminpanelTitle' => 'Panel de Administración',
+    'gameTitle' => 'Juego',
+
     // Navbar
     'home' => 'Inicio',
     'rules' => 'Reglas',
@@ -13,7 +23,7 @@ $langTexts = [
     'english' => 'Inglés',
     'spanish' => 'Español',
     'about' => 'Nosotros',
-     'dino runner' => 'Correcadinos',
+    'dino runner' => 'Correcadinos',
 
 
     // Títulos / tooltips
@@ -117,19 +127,19 @@ $langTexts = [
     'userProfile_wins' => 'Victorias',
     'userProfile_total_score' => 'Puntaje total',
 
-    
+
     // Carrusel alt
     'altCarousel1' => 'Piezas de dinosaurios coloridas',
     'altCarousel2' => 'Cartas y fichas del juego',
     'altCarousel3' => 'Niños jugando juntos',
 
     // Hero títulos y subtítulos
-    'heroTitle1' => 'UN JUEGO PARA TODA LA FAMILIA',
-    'heroSubtitle1' => 'Diviértete con nuestros dinosaurios y devora a tus amigos.',
-    'heroTitle2' => 'ESTRATEGIA Y DIVERSIÓN',
-    'heroSubtitle2' => 'Colecciona dinosaurios y construye el mejor parque jurásico.',
-    'heroTitle3' => 'MOMENTOS INOLVIDABLES',
-    'heroSubtitle3' => 'Crea recuerdos épicos con tu familia y amigos.',
+    'heroTitle1' => 'UN DINO-JUEGO PARA TODA LA FAMILIA',
+    'heroSubtitle1' => 'Diviértete con nuestros dinos y devora a tus dino-amigos.',
+    'heroTitle2' => 'DINO-ESTRATEGIA Y DINO-DIVERSIÓN',
+    'heroSubtitle2' => 'Usa bien tus dinosaurios para ganar la dino-partida.',
+    'heroTitle3' => 'MOMENTOS DINO-LVIDABLES',
+    'heroSubtitle3' => 'Crea recuerdos épicos con tu dino-familia y dino-amigos.',
 
     // Botones debajo del carrusel
     'tracking' => 'Seguimiento',
@@ -143,11 +153,11 @@ $langTexts = [
     'players' => 'jugadores',
 
     // Features
-    'featureEasyTitle' => 'Fácil de aprender',
+    'featureEasyTitle' => 'Fácil de Dino-aprender',
     'featureEasyText' => 'Reglas simples que todos pueden entender en minutos',
-    'featureFastTitle' => 'Rápido y dinámico',
-    'featureFastText' => 'Partidas de 15 minutos llenas de decisiones emocionantes',
-    'featureFamilyTitle' => 'Para toda la familia',
+    'featureFastTitle' => 'Rápido y Dino-dinámico',
+    'featureFastText' => 'Partidas de aprox 15 minutos llenas de decisiones emocionantes',
+    'featureFamilyTitle' => 'Para toda la Dino-familia',
     'featureFamilyText' => 'De 8 a 99 años, diversión garantizada para todos',
 
     'goSlide1' => 'Ir a la imagen 1',
@@ -155,7 +165,7 @@ $langTexts = [
     'goSlide3' => 'Ir a la imagen 3',
 
     //Register
-    
+
     'nickname' => 'Ingresa tu nickname',
     'first_name' => 'Ingresa tu nombre',
     'last_name' => 'Ingresa tu apellido',
@@ -173,5 +183,114 @@ $langTexts = [
     'energy' => 'Energía',
     'no_dinosaurs' => 'No tienes dinosaurios disponibles.',
     'start_game' => 'Comenzar Juego',
-    
+
+    // Admin Panel
+    'adminPanelTitle' => 'Panel de Administración',
+    'registeredUsers' => 'Usuarios registrados',
+    'nickname' => 'Nickname',
+    'firstName' => 'Nombre',
+    'lastName' => 'Apellido',
+    'email' => 'Email',
+    'role' => 'Rol',
+    'status' => 'Estado',
+    'bannedUntil' => 'Baneado hasta',
+    'actions' => 'Acciones',
+    'searchUserPlaceholder' => 'Buscar usuario por nickname o email...',
+    'playerRole' => 'Jugador',
+    'adminRole' => 'Admin',
+    'active' => 'Activo',
+    'inactive' => 'Inactivo',
+    'editUser' => 'Editar Usuario',
+    'deleteUser' => 'Eliminar Usuario',
+    'confirmDelete' => '¿Eliminar usuario?',
+    'banUser' => 'Bannear Usuario',
+    'unbanUser' => 'Desbanear Usuario',
+    'banDays' => 'días',
+    'newPassword' => 'Nueva Contraseña (opcional)',
+    'leaveEmpty' => 'Dejar vacío no cambia',
+    'saveChanges' => 'Guardar cambios',
+    'close' => 'Cerrar',
+    'userUpdated' => "Usuario '%s' actualizado correctamente.",
+
+    // Game.php
+    'boardOf' => 'Tablero de',
+    'comingSoon' => 'Próximamente',
+    'underConstruction' => 'en construcción',
+    'undo' => 'Deshacer',
+    'redo' => 'Rehacer',
+    'saveGame' => 'Guardar Partida',
+
+    //About.php
+
+    'aboutTitle' => 'Draftosaurus - Sobre Nosotros',
+    'about_us_title' => 'Sobre nosotros',
+    'about_us_paragraph' => 'Software-X Studio es un emprendimiento de base tecnológica orientado al desarrollo de soluciones digitales aplicadas al entretenimiento y la educación. Está conformado por un equipo multidisciplinario de jóvenes técnicos en informática y diseño, cuya propuesta combina innovación, accesibilidad y experiencia de usuario. El proyecto inicial consiste en la creación de una aplicación web llamada Draftosaurus App, una herramienta de apoyo para partidas del popular juego de mesa Draftosaurus. Esta aplicación automatiza el conteo de puntos, la aplicación de reglas y la gestión de partidas, mejorando la experiencia de los jugadores sin reemplazar la interacción física del juego.',
+
+    'mission_title' => 'Misión',
+    'mission_text' => 'Brindar soluciones digitales creativas y eficientes que potencien la experiencia de juego de los usuarios, con especial atención al diseño, la funcionalidad y el trabajo en equipo.',
+
+    'vision_title' => 'Visión',
+    'vision_text' => 'Ser reconocidos como una empresa innovadora dentro del sector de software aplicado al entretenimiento y aprendizaje, manteniendo una identidad fuerte, divertida y profesional.',
+
+    'team_title' => 'Nuestro Equipo',
+    'team_member_marcos' => 'Marcos Sierra',
+    'team_marcos_desc' => 'Coordinador del proyecto y diseñador creativo. Lidera el equipo y asegura que cada entrega mantenga la identidad del proyecto.',
+    'team_member_juan' => 'Juan Alonso',
+    'team_juan_desc' => 'Subcoordinador y gestor operativo. Organiza la planificación y la comunicación del equipo de manera eficiente.',
+    'team_member_marcel' => 'Marcel Barrios',
+    'team_marcel_desc' => 'Programador técnico y especialista en infraestructura. Se encarga de la estabilidad y el funcionamiento del sistema.',
+    'team_member_vega' => 'Marcos Vega',
+    'team_vega_desc' => 'Programador creativo. Desarrolla la interfaz y aporta ideas innovadoras para la experiencia del usuario.',
+
+    'location_title' => 'Ubicación',
+    'location_address' => 'Colonia 2234, Montevideo, Uruguay',
+    'location_site_text' => 'Sitio web Sinergia:',
+    'location_site_link' => 'sinergia.uy/on-demand',
+
+    'contact_title' => 'Contacto',
+    'contact_text' => '¿Tienes ideas, sugerencias o quieres colaborar? Escríbenos.',
+    'contact_name' => 'Nombre:',
+    'contact_name_ph' => 'Tu nombre...',
+    'contact_email' => 'Correo:',
+    'contact_email_ph' => 'tunombre@email.com',
+    'contact_message' => 'Mensaje:',
+    'contact_message_ph' => 'Escribe tu mensaje...',
+    'contact_send' => 'Enviar Mensaje',
+    'contact_send_title' => 'Enviar Mensaje',
+
+    'chatbot_help_btn' => 'Ayuda',
+    'chatbot_help_title' => 'Ayuda',
+    'chat_with_hugo' => 'Chat con Hugo',
+    'close' => 'Cerrar',
+
+    // Chatbot.php
+
+    'hugo_name' => 'Hugo',
+    'hugo_description' => 'Tu asistente para Draftosaurus',
+    'hugo_online' => 'En línea',
+    'bot_greeting' => 'Hola, soy Hugo. ¿En qué puedo ayudarte?',
+    'user_input_placeholder' => 'Escribe tu pregunta a Hugo...',
+    'send_button' => 'Enviar',
+
+    // Tracking.php
+
+    'trackingTitle' => 'Tracking - Draftosaurus',
+    'dinoScore' => 'Dino-Puntaje de',
+    'zone1Label' => 'El Dino-Bosque de la Dino-Semejanza',
+    'zone2Label' => 'El Trío Dino-Frondoso',
+    'zone3Label' => 'La Dino-Pradera del Dino-Amor',
+    'zone4Label' => 'El Dino-Rey de la Dino-Selva',
+    'zone5Label' => 'El Dino-Prado de la Dino-Diferencia',
+    'zone6Label' => 'La Dino-Isla Dino-Solitaria',
+    'zone7Label' => 'El Dino-Rio de la Dino-Vida',
+    'nextBtn' => 'Siguiente',
+    'finishBtn' => 'Finalizar',
+    'winnerTitle' => 'Ganador(es)',
+    'newGameBtn' => 'Nueva Dino-Partida',
+    'backHomeBtn' => 'Volver al Dino-Inicio',
+    'nextBtnTitle' => 'Ir a la siguiente ronda',
+    'finishBtnTitle' => 'Finalizar el seguimiento',
+    'newGameBtnTitle' => 'Comenzar nueva partida',
+    'backHomeBtnTitle' => 'Regresar al inicio',
+
 ];
